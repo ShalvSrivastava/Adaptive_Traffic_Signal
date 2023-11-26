@@ -1,0 +1,139 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            background-size: cover; /* You can adjust this property based on your needs */
+            background-position: center; /* You can adjust this property based on your needs */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+        }
+        
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+        }
+
+        main {
+            width: 80%;
+            max-width: 800px;
+            margin: 20vh auto;
+            padding: 20px;
+            background-image: linear-gradient(
+                45deg,
+                hsl(113deg 100% 20%) 0%,
+                hsl(106deg 100% 24%) 6%,
+                hsl(98deg 100% 28%) 13%,
+                hsl(91deg 100% 31%) 19%,
+                hsl(84deg 100% 35%) 25%,
+                hsl(77deg 100% 39%) 31%,
+                hsl(70deg 100% 43%) 37%,
+                hsl(62deg 100% 46%) 44%,
+                hsl(55deg 100% 50%) 50%,
+                hsl(48deg 100% 50%) 56%,
+                hsl(41deg 100% 50%) 63%,
+                hsl(34deg 100% 50%) 69%,
+                hsl(28deg 100% 50%) 75%,
+                hsl(21deg 100% 50%) 81%,
+                hsl(14deg 100% 50%) 87%,
+                hsl(7deg 100% 50%) 94%,
+                hsl(0deg 100% 50%) 100%
+              );
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            display: flex;
+            justify-content: space-between; /* Horizontally separate the two sections */
+          
+        }
+
+        .upload-form {
+            width: 48%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        button {
+            padding: 15px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Traffic Analysis</h1>
+    </header>
+
+    <main>
+        <div class="upload-form">
+            <h2>Upload Image</h2>
+            <form method="POST" action="/" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+                <button type="submit">Submit</button>
+            </form>
+            {% if result_image_base64 %}
+                <h2>Uploaded Image:</h2>
+                <img src="data:image/png;base64,{{ result_image_base64 }}" alt="Uploaded Image">
+            {% endif %}
+        </div>
+
+        <div class="upload-form">
+            <h2>Upload Video</h2>
+            <!-- No backend connection for video input/output for now -->
+            <form method="POST" action="/analyze_video" enctype="multipart/form-data">
+                <input type="file" name="videoFile" accept=".mp4, .avi" required>
+                <button type="submit">Submit</button> <!-- Disabled as no backend connection for video -->
+            </form>
+        </div>
+    </main>
+</body>
+</html>

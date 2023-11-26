@@ -1,0 +1,103 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Analysis Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .result-box {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        .green-text {
+            color: #4CAF50;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .try-again-button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .try-again-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Analysis Result</h1>
+    </header>
+    
+    <img src="{{ url_for('get_image', filename='user_input.jpg') }}" alt="Bounding Box Image" width="500">
+
+    <p class="result-box">Vehicle Density: {{ density }}</p>
+    <p class="result-box green-text">Green Light Time: {{ green_light_time }}</p>
+
+    <h2>Vehicle Counts:</h2>
+    <ul>
+        {% for class_name, count in vehicle_count.items() %}
+            <li class="result-box">{{ class_name }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('index') }}" class="try-again-button">Try Again</a>
+</body>
+</html>
