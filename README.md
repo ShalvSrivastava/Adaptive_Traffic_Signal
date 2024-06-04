@@ -7,6 +7,9 @@ Upon calling the analyze_traffic function with an image file path, the script in
 
 Furthermore, I've incorporated a calculation for the green light time at a traffic signal based on the vehicle density, considering different coefficients for various vehicle types and a maximum green light time. The script produces outputs including the calculated vehicle density, vehicle count, and an image featuring bounding boxes around detected vehicles and highlighted lanes.
 
+![image](https://github.com/ShalvSrivastava/Adaptive_Traffic_Signal/assets/111503932/49533276-89d6-42f4-b9e9-29c075cec6af)
+
+
 
 **Video Analysis**
 
